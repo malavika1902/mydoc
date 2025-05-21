@@ -1,0 +1,124 @@
+use abc ;
+create table student (id int primary key , name varchar(20);
+insert into student (id , name ) values ( 1, 'ammu');
+select * from student where id = 1;
+select * from student where name = 'ammu';
+insert into student (id , name ) values ( 2, 'arju');
+select * from student ;
+select * from student where id = 2;
+update student set name = 'minnu' where id = 2;
+delete from student where id =1;
+select * from student ;
+alter table student add Email varchar(200);
+insert into student (id,name,email) values (5,'anen','anv@gmail.com');
+select * from student ;
+insert into student (id,name,email) values (5,'anen','anv@gmail.com');
+insert into student (Email) values ('anv@gmail.com') where id = 2; #error
+update student set Email = "sdfg@qwe" where id = 2;
+update student set email = "sdfg@qwe" where id = 2;
+create table sports ( id int primary key, name varchar(30) , teamno int );
+insert into sports (id,name,teamno) values (1,'cricket',11);
+insert into sports (id,name,teamno) values (2,'basketball',5);
+insert into sports (id,name,teamno) values (4,'football',11);
+insert into sports (id,name,teamno) values (3,'volleyball',12);
+alter table sports change teamno playersno int;
+alter table sports change id s_id int;
+alter table sports change name s_name varchar(20);
+select * from sports ;
+update sports set id  = 3 where id = 4;
+update sports set id  = 4 where id = 6;
+delete from sports where id = 4;
+select id,name,playersno from sports order by playersno desc;
+select id,name,playersno from sports where name like 'F%';
+SELECT * from student;
+select * from sports;
+select id ,s_name ,name from student  join sports on student.id = sports.id;
+select id ,s_name ,name from student  inner join sports on student.id = sports.s_id;
+select id ,s_name ,name from student left join sports on student.id = sports.s_id;
+select id ,s_name ,name from student  right join sports on student.id = sports.s_id;
+select id,s_id,name,s_name  from student outer join sports on student.id = sports.s_id;
+alter table sports change s_id id int;
+
+CREATE database UST;
+use UST;
+create database sql;
+
+
+ 
+drop table employee ;
+insert into EMPLOYEE (E_Id , E_name ,E_Designation ) values ( 112 , 'ERIN', 'Developer');
+insert into EMPLOYEE (E_Id , E_name ,E_Designation ) values ( 113 , 'IMMA', 'Tester');
+insert into EMPLOYEE (E_Id , E_name ,E_Designation ) values ( 114 , 'GEORGE', 'Developer');
+insert into EMPLOYEE (E_Id , E_name ,E_Designation ) values ( 115 , 'WILLIAM', 'HR');
+
+SELECT E_Id , E_name ,E_Designation From Employee WHERE E_Designation = 'Developer' or E_Designation ='HR';
+SELECT E_Id , E_name ,E_Designation From Employee WHERE E_Designation = 'Developer' and E_name = 'GEORGE';
+select distinct E_Designation From Employee;
+Select  E_Id , E_name ,E_Designation from Employee where e_name like 'g%';
+Select  E_Id , E_name ,E_Designation from Employee where e_name like '%n';
+Select  E_Id , E_name ,E_Designation from Employee where e_id like '%1%';
+Select  E_Id , E_name ,E_Designation from Employee where e_name like '%m%';
+Select  E_Id , E_name ,E_Designation from Employee order by e_name desc;
+desc employee;
+Select  E_Id , E_name ,E_Designation from Employee where e_name like '%E__%';
+Select  E_Id , E_name ,E_Designation from Employee where e_id in(113, 115);
+select E_Id.EMP_ID from Employee as Employee_table;
+show tables;
+
+select min(e_id) from employee;
+CREATE TABLE EMP_DETAILS ( department varchar(30), salary int,ED_id INT PRIMARY KEY );
+Insert into EMP_DETAILS ( department , salary , ED_ID) values ( 'IT' , 50000,112);
+Insert into EMP_DETAILS ( department , salary , ED_ID) values ( 'IT' , 40000,113);
+Insert into EMP_DETAILS ( department , salary , ED_ID) values ( 'HR' , 58000,115);
+
+select Employee.E_id , Employee.E_name , EMP_DETAILS.Salary
+ from Employee FULL join Emp_Details ON Employee.E_id = EMP_DETAILS.ED_ID;
+ Insert into EMP_DETAILS ( department , salary , ED_ID) values ( 'IT' , 50000,112);
+ Select E_NAME, COUNT(DEPARTMENT) FROM EMP_DET GROUP BY DEPARTMENT;
+ 
+ create database Hospital;
+ use hospital;
+-- table 1 --
+create table Doctors(D_id int primary key ,D_name varchar(30),Dept_Id int);
+Insert into Doctors(D_id ,D_name,Dept_Id) values (210,"Arathi",10);
+Insert into Doctors (D_id ,D_name,Dept_Id) values (211,"Midhika",12);
+Insert into Doctors (D_id ,D_name,Dept_Id) values (212,"Nayana",11);
+Insert into Doctors (D_id ,D_name,Dept_Id) values (213,"Zayan",12);
+-- table 2 --
+create table Department (D_deptid int , D_Departmentname varchar(40));
+Insert into Department (D_deptid,D_Departmentname) values (10,"General_Medicine");
+Insert into Department (D_deptid,D_Departmentname) values (12,"Pediatrician");
+Insert into Department (D_deptid,D_Departmentname) values (11,"Ophathamology");
+ -- innerjoin --
+Select Doctors.D_Id ,Doctors.D_name ,Department.D_Departmentname from Doctors inner join Department on Dept_Id = D_deptid;
+ -- orderby doctor name--
+Select Doctors.D_Id ,Doctors.D_name ,Department.D_Departmentname from Doctors inner join Department on Dept_Id = D_deptid order by doctors.d_name;
+-- starts with a--
+Select D_Id ,D_name from doctors WHERE D_name like "%A";
+-- i inbetween --
+Select D_Id ,D_name from doctors WHERE D_name like "%_i_%";
+-- group by department --
+Select Dept_Id ,count(D_name) from doctors group by Dept_Id having Dept_Id>10;
+-- identify unique department name --
+Select distinct D_deptid ,Department.D_Departmentname from department;
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
